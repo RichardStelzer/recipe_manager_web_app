@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+{% block content %}
+    Title: <strong>{{ recipe.title }}</strong><br>
+    Author: <strong>{{ recipe.author }}</strong>
+    Created at: <strong>{{ recipe.created_at|date:"d M Y H:i" }}</strong><br><br> <!-- |timesince-->
+    Description: <br>{{ recipe.description }}<br><br>
+    Instruction: <br>{{ recipe.instruction }}
+{% endblock %}

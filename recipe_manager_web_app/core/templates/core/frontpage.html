@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+
+{% block title %}Overview{% endblock %}
+
+{% block content %}
+    {% for recipe in recipes %}
+        Title: <strong>{{ recipe.title }}</strong><br>
+        Author: <strong>{{ recipe.author }}</strong>
+        Created at: <strong>{{ recipe.created_at|date:"d M Y H:i" }}</strong><br> <!-- |timesince-->
+        <a href="{% url 'recipe_detail' recipe.slug %}">Link to detailed view</a>
+    {% endfor %}
+{% endblock %}
