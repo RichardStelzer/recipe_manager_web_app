@@ -14,7 +14,7 @@ class Recipe(models.Model):
     slug = models.SlugField()
     brief_description = models.TextField()
     full_description = models.TextField()
-    ingredients = models.ManyToManyField(Ingredient, through="IngredientQuantity")
+    ingredients = models.ManyToManyField(Ingredient, through="IngredientQuantity", related_name='ingredients')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -36,6 +36,7 @@ class IngredientQuantity(models.Model):  # Join the db tables
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
 
     quantity = models.IntegerField()
+
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
     def __str__(self):

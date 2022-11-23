@@ -13,7 +13,11 @@
                             Author: <strong>{{ recipe.author }}</strong><br>
                             Created: <strong>{{ recipe.created_at|date:"d M Y H:i" }}</strong><br><br> <!-- |timesince-->
                             Description: <br>{{ recipe.brief_description }}<br><br>
-                            Instruction: <br>{{ recipe.full_description }}
+                            Instruction: <br>{{ recipe.full_description }}<br><br>
+                            Ingredients: <br>
+                            {% for current_ingredient in recipe.ingredientquantity_set.all %}
+                                {{ current_ingredient.ingredient.name }}: {{ current_ingredient.quantity }} {{ current_ingredient.unit }} <br>
+                            {% endfor %}
                         </div>
                     </div>
                 </section>
