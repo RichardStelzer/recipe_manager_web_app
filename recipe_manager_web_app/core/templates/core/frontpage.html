@@ -1,12 +1,41 @@
 {% extends "core/base.html" %}
-
+{% load static %}
 {% block title %}Overview{% endblock %}
 
 {% block content %}
-    {% for recipe in recipes %}
-        Title: <strong>{{ recipe.title }}</strong><br>
-        Author: <strong>{{ recipe.author }}</strong>
-        Created at: <strong>{{ recipe.created_at|date:"d M Y H:i" }}</strong><br> <!-- |timesince-->
-        <a href="{% url 'recipe_detail' recipe.slug %}">Link to detailed view</a>
-    {% endfor %}
+    <section class="hero ">
+        <div class="hero-body">
+            <div class="container">
+                <!-- START IMAGE -->
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        <figure class="image is-16by9">
+                            <img src="{% static '/core/pizza_stock_photo.jpg' %}" alt="Intro image">
+                        </figure>
+                    </div>
+                </div>
+                <!-- END IMAGE -->
+                <!-- START RECIPE -->
+                <section class="section">
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            {% for recipe in recipes %}
+                                <div class="content is-medium">
+                                    <a href="{% url 'recipe_detail' recipe.slug %}" style="color:black">
+                                        <h2 class="subtitle is-5 has-text-grey">{{ recipe.created_at|date:"d M Y H:i" }}</h2> <!-- |timesince-->
+                                        <h1 class="title has-text-black is-3">{{ recipe.title }}</h1>
+                                        <p>{{ recipe.brief_description }}</p>
+                                    </a>
+                                </div>
+                                {% if forloop.first %} <!-- Dont show horizontal line for recipe on bottom of the page -->
+                                    <hr>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+                <!-- END RECIPE -->
+            </div>
+        </div>
+    </section>
 {% endblock %}

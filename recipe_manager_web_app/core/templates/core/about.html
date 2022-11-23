@@ -1,7 +1,36 @@
 {% extends "core/base.html" %}
-
+{% load static %}
 {% block title %}About{% endblock %}
 
 {% block content %}
-    <h1>About</h1>
+    <style>
+        .hero.is-info {
+             background: linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.5)
+             ), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+        }
+        .hero .subtitle {
+            padding: 3rem 0;
+            line-height: 1.5;
+        }
+    </style>
+        <section class="hero is-info is-fullheight">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="column is-6 is-offset-3 is-centered">
+                        <h1 class="title">
+                            About
+                        </h1>
+                        <h2 class="subtitle">
+                            Basic recipe web app, built with the python web framework django. Work in progress. :D
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
 {% endblock %}
