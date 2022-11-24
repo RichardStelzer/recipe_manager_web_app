@@ -15,8 +15,8 @@
                             Description: <br>{{ recipe.brief_description }}<br><br>
                             Instruction: <br>{{ recipe.full_description }}<br><br>
                             Ingredients: <br>
-                            {% for current_ingredient in recipe.ingredientquantity_set.all %}
-                                {{ current_ingredient.ingredient.name }}: {{ current_ingredient.quantity }} {{ current_ingredient.unit }} <br>
+                            {% for ele in recipe.ingredientquantity_set.all %}
+                                {{ ele.ingredient.name }}: {{ ele.quantity }} {{ ele.unit }} <br>
                             {% endfor %}
                         </div>
                     </div>

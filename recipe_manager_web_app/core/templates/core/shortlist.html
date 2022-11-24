@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <section class="hero ">
+        <div class="hero-body">
+            <div class="container">
+                <section class="section">
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            <div class="content is-medium">
+                                <h1>Shortlist</h1>
+                                {% for recipe in recipes %}
+                                    <li>
+                                        <a href="{% url 'recipe_detail' recipe.slug %}">{{ recipe.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}

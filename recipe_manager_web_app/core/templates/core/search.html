@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+    <section class="hero ">
+        <div class="hero-body">
+            <div class="container">
+                <section class="section">
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            <div class="content is-medium">
+                                <h1>{{ message }}</h1>
+                                {% if recipes_found %}
+                                    {% for recipe in search_result %}
+                                        <li>
+                                            <a href="{% url 'recipe_detail' recipe.slug %}">{{ recipe.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No recipes found.</p>   <a href="{% url 'shortlist' %}">Show the complete recipe list here.</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}

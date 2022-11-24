@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from core.views import about, frontpage
+from core.views import shortlist, search, about, frontpage
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("shortlist/", shortlist, name="shortlist"),
+    path("search/", search, name="search"),
     path("about/", about, name="about"),
     path("", include("recipe.urls")),
     path("", frontpage, name="frontpage"),

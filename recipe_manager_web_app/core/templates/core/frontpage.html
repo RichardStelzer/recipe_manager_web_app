@@ -22,7 +22,7 @@
                             {% for recipe in recipes %}
                                 <div class="content is-medium">
                                     <a href="{% url 'recipe_detail' recipe.slug %}" style="color:black">
-                                        <h2 class="subtitle is-5 has-text-grey">{{ recipe.created_at|date:"d M Y H:i" }}</h2> <!-- |timesince-->
+                                        <h2 class="subtitle is-5 has-text-grey">{{ recipe.created_at|date:"d M Y H:i" }}</h2>  <!-- |timesince-->
                                         <h1 class="title has-text-black is-3">{{ recipe.title }}</h1>
                                         <p>{{ recipe.brief_description }}</p>
                                     </a>
