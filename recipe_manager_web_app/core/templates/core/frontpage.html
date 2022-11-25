@@ -26,6 +26,10 @@
                                         <h1 class="title has-text-black is-3">{{ recipe.title }}</h1>
                                         <p>{{ recipe.brief_description }}</p>
                                     </a>
+                                    {% for ele in recipe.categories.all %}
+                                        <a href="{% url 'recipe_category' ele.slug %}">{{ ele.name }}{% if forloop.first and not forloop.revcounter0 < 1 %},{% endif %}</a>
+
+                                    {% endfor %}
                                 </div>
                                 {% if forloop.first %} <!-- Dont show horizontal line for recipe on bottom of the page -->
                                     <hr>

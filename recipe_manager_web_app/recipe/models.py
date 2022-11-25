@@ -1,11 +1,26 @@
 from django.db import models
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField()
+
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.name
+
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
+
+
+class Teste(models.Model):
+    name = models.CharField(max_length=255)
 
 
 class Recipe(models.Model):
@@ -16,6 +31,8 @@ class Recipe(models.Model):
     full_description = models.TextField()
     ingredients = models.ManyToManyField(Ingredient, through="IngredientQuantity", related_name='ingredients')
     created_at = models.DateTimeField(auto_now_add=True)
+    categories = models.ManyToManyField(Category, related_name="categories")
+    teste = models.ManyToManyField(Teste, related_name="teste")
 
     class Meta:
         ordering = ("-created_at",)
@@ -44,4 +61,3 @@ class IngredientQuantity(models.Model):  # Join the db tables
 
     def __str__(self):
         return self.recipe.title + " - " + self.ingredient.name
-

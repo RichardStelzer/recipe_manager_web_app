@@ -31,7 +31,7 @@
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-item" href="../"> <!-- link to same page -->
+                    <a class="navbar-item" href="/"> <!-- link to same page -->
                         <img src="" alt="Logo placeholder">
                     </a>
                     <span class="navbar-burger burger" data-target="navbarMenu">
@@ -52,7 +52,7 @@
                                 </form>
                             </div>
                         </div>
-                        <a class="navbar-item is-size-5 has-text-weight-semibold {% if request.resolver_match.url_name == 'frontpage' %}is-active{% endif %}" href="../">
+                        <a class="navbar-item is-size-5 has-text-weight-semibold {% if request.resolver_match.url_name == 'frontpage' %}is-active{% endif %}" href="/">
                             Home
                         </a>
                         <a class="navbar-item is-size-5 has-text-weight-semibold {% if request.resolver_match.url_name == 'shortlist' %}is-active{% endif %}" href="/shortlist/">
@@ -61,7 +61,7 @@
                         <a class="navbar-item is-size-5 has-text-weight-semibold {% if request.resolver_match.url_name == 'top_recipes' %}is-active{% endif %}">
                             Top Recipes
                         </a>
-                        <a class="navbar-item is-size-5 has-text-weight-semibold {% if request.resolver_match.url_name == 'categories' %}is-active{% endif %}">
+                        <a class="navbar-item is-size-5 has-text-weight-semibold {% if request.resolver_match.url_name == 'categories' %}is-active{% endif %}" href="/category/all/">
                             Categories
                         </a>
                         <a class="navbar-item is-size-5 has-text-weight-semibold {% if request.resolver_match.url_name == 'about' %}is-active{% endif %}" href="/about/">

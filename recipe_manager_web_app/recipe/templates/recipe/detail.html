@@ -17,6 +17,10 @@
                             Ingredients: <br>
                             {% for ele in recipe.ingredientquantity_set.all %}
                                 {{ ele.ingredient.name }}: {{ ele.quantity }} {{ ele.unit }} <br>
+                            {% endfor %}<br>
+                            Categories: <br>
+                            {% for ele in recipe.categories.all %}
+                                <a href="{% url 'recipe_category' ele.slug %}">{{ ele.name }}{% if forloop.first and not forloop.revcounter0 < 1 %},{% endif %}</a>
                             {% endfor %}
                         </div>
                     </div>
