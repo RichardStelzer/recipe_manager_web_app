@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models import Avg
 
 
 class Category(models.Model):
@@ -19,10 +21,6 @@ class Ingredient(models.Model):
         return self.name
 
 
-class Teste(models.Model):
-    name = models.CharField(max_length=255)
-
-
 class Recipe(models.Model):
     author = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
@@ -32,7 +30,10 @@ class Recipe(models.Model):
     ingredients = models.ManyToManyField(Ingredient, through="IngredientQuantity", related_name='ingredients')
     created_at = models.DateTimeField(auto_now_add=True)
     categories = models.ManyToManyField(Category, related_name="categories")
-    teste = models.ManyToManyField(Teste, related_name="teste")
+
+    def average_rating(self):
+        print("--------------->", Rating.objects.filter(recipe=self))
+        return Rating.objects.filter(recipe=self).aggregate(Avg("rating"))["rating__avg"] or "Not rated yet"
 
     class Meta:
         ordering = ("-created_at",)
@@ -61,3 +62,13 @@ class IngredientQuantity(models.Model):  # Join the db tables
 
     def __str__(self):
         return self.recipe.title + " - " + self.ingredient.name
+
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+    rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.rating)

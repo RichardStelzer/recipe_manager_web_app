@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-from .models import Category, Unit, Ingredient, Recipe, IngredientQuantity
+from .models import Category, Unit, Ingredient, Rating, Recipe, IngredientQuantity
 
 admin.site.register(Category)
 admin.site.register(Unit)
 admin.site.register(Ingredient)
+admin.site.register(Rating)
 
 
 @admin.register(Recipe)
