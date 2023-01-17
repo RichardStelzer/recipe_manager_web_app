@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 
-from .models import Category, Recipe
+from .models import Category, Recipe, Rating
 
 from django.db.models import Q
 
@@ -40,7 +40,7 @@ def category(request, slug):
         return render(request, "recipe/category.html", context)
 
     category = get_object_or_404(Category, slug=slug)
-    message = "Recipes for category \'" + category.name + "\'"
+    message = "Recipes of the category \'" + category.name + "\'"
 
     # print("Category to be displayed ------>", category)
     # print("Recipe objects ---------------->", Recipe.objects.all())
@@ -62,3 +62,10 @@ def category(request, slug):
 
     print("context ---------------->", context)
     return render(request, "recipe/category.html", context)
+
+
+def rate(request, recipe_slug, rating):
+    recipe = Recipe.objects.get(slug=recipe_slug)
+    Rating.objects.filter(post=recipe, user=request.user).delete()
+    recipe.rating_set.create(user=request.user, rating=rating)
+    return detail(request)

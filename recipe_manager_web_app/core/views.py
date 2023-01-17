@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 
 from recipe.models import Recipe
 
 from django.db.models import Q
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 
 def shortlist(request):
@@ -44,3 +46,16 @@ def frontpage(request):
 def about(request):
     return render(request, "core/about.html")
 
+
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+
+            return redirect("frontpage")
+    else:
+        form = UserCreationForm()
+
+    return render(request, "core/signup.html", {"form": form})
