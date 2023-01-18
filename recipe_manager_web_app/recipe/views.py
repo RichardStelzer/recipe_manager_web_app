@@ -41,10 +41,10 @@ def detail(request, slug):
     print("------> 'recipe.ingredientquantity_set.all()[0].unit' ---> ", recipe.ingredientquantity_set.all()[0].unit)
     print("------> 'recipe.ingredients.all()' ---> ", recipe.ingredients.all())
     print("------> 'recipe.category_set.all()' ---> ", recipe.categories.all())
-
+    print("AAAAAA ---> ", type(recipe.ingredientquantity_set.all()[4].unit.name))
     # print(recipe.ingredients.all())
     # print(recipe.ingredients.all()[1].name)
-    print(portions)
+    # print(portions)
 
     return render(request, "recipe/detail.html", {"recipe": recipe,
                                                   "new_ingredient_quantities": new_ingredient_quantities,

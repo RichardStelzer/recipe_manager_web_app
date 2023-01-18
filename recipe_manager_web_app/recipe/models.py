@@ -45,7 +45,7 @@ class Recipe(models.Model):
 
 
 class Unit(models.Model):
-    name = models.CharField(max_length=255, default=None, blank=True, null=True)
+    name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
@@ -55,7 +55,7 @@ class IngredientQuantity(models.Model):  # Join the db tables
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
 
-    quantity = models.IntegerField()
+    quantity = models.FloatField(default=1)
 
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 

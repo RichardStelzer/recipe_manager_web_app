@@ -9,11 +9,11 @@
                 <section class="section">
                     <div class="columns">
                         <div class="column is-8 is-offset-2">
-                            Title: <strong>{{ recipe.title }}</strong><br>
-                            Author: <strong>{{ recipe.author }}</strong><br>
-                            Created: <strong>{{ recipe.created_at|date:"d M Y H:i" }}</strong><br><br> <!-- |timesince-->
-                            Description: <br>{{ recipe.brief_description }}<br><br>
-                            Instruction: <br>{{ recipe.full_description }}<br><br>
+                            <h1 class="title is-2"><strong>{{ recipe.title }}</strong></h1><br>
+                            <h2 class="subtitle">{{ recipe.brief_description }}</h2>
+                            By <strong>{{ recipe.author }}</strong>, <small>{{ recipe.created_at|date:"d M Y H:i" }}</small><br><br><!-- |timesince-->
+                            <h3 class="title is-4">Method:</h3>
+                            {{ recipe.full_description }}
 
                             <section class="section">
                                 <form method="get" action="{% url 'recipe_detail' recipe.slug %}">
@@ -49,7 +49,11 @@
                                             {% for ele in new_ingredient_quantities %}
                                                 <tr>
                                                     <td style="text-align:right">
-                                                        {{ ele.1 }} {{ ele.2 }}
+                                                        {{ ele.1|floatformat:'-2' }}
+                                                        {% if ele.2 == "unitless" %}
+                                                        {% else %}
+                                                            {{ ele.2 }}
+                                                        {% endif %}
                                                     </td>
                                                     <td>
                                                         {{ ele.0 }}
@@ -60,7 +64,11 @@
                                             {% for ele in recipe.ingredientquantity_set.all %}
                                                 <tr>
                                                     <td style="text-align:right">
-                                                        {{ ele.quantity }} {{ ele.unit }}
+                                                        {{ ele.quantity|floatformat:'-2' }}
+                                                        {% if ele.unit.name == "unitless" %}
+                                                        {% else %}
+                                                            {{ ele.unit.name }}
+                                                        {% endif %}
                                                     </td>
                                                     <td>
                                                         {{ ele.ingredient.name }}

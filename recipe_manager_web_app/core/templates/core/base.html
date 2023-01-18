@@ -1,7 +1,5 @@
 {% load static %}
-
 <!DOCTYPE html>
-
 <html>
     <head>
         <!-- START META -->
@@ -32,7 +30,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="/"> <!-- link to same page -->
-                        <img src="" alt="Logo placeholder">
+                        <img src="{% static '/core/pizza_stock_photo.jpg' %}" alt="Logo placeholder">
                     </a>
                     <span class="navbar-burger burger" data-target="navbarMenu">
                         <span></span>
@@ -76,6 +74,7 @@
                                     <a class="navbar-item is-size-6 has-text-weight-semibold button is-light" href="{% url 'login' %}">Login</a>
                                 {% endif %}
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
