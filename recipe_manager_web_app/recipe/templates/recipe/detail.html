@@ -14,10 +14,64 @@
                             Created: <strong>{{ recipe.created_at|date:"d M Y H:i" }}</strong><br><br> <!-- |timesince-->
                             Description: <br>{{ recipe.brief_description }}<br><br>
                             Instruction: <br>{{ recipe.full_description }}<br><br>
-                            Ingredients: <br>
-                            {% for ele in recipe.ingredientquantity_set.all %}
-                                {{ ele.ingredient.name }}: {{ ele.quantity }} {{ ele.unit }} <br>
-                            {% endfor %}<br>
+
+                            <section class="section">
+                                <form method="get" action="{% url 'recipe_detail' recipe.slug %}">
+                                    <div class="field is-horizontal">
+                                        <div class="field-label is-normal">
+                                            <label class="label">Ingredients for</label>
+                                        </div>
+                                        <div class="field-body">
+                                            <div class="field">
+                                                <div class="field has-addons">
+                                                    <div class="control">
+                                                        <input class="input" name="portions" type="number" value="{{ portions }}" min="1" max="500" >
+                                                    </div>
+                                                    <div class="control">
+                                                        <button class="button is-info" type="submit">portions</button>
+                                                    </div>
+                                                    <!--<p class="control">
+                                                        <a class="button is-light">
+                                                            Reset
+                                                        </a>
+                                                    </p>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
+                                <table style="width:100%" class="table is-bordered is-hoverable is-striped is-fullwidth">
+                                    <col style="width:33.33%">
+                                    <col style="width:66.67%">
+                                    <tbody>
+                                        {% if new_ingredient_quantities %}
+                                            {% for ele in new_ingredient_quantities %}
+                                                <tr>
+                                                    <td style="text-align:right">
+                                                        {{ ele.1 }} {{ ele.2 }}
+                                                    </td>
+                                                    <td>
+                                                        {{ ele.0 }}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% else %}
+                                            {% for ele in recipe.ingredientquantity_set.all %}
+                                                <tr>
+                                                    <td style="text-align:right">
+                                                        {{ ele.quantity }} {{ ele.unit }}
+                                                    </td>
+                                                    <td>
+                                                        {{ ele.ingredient.name }}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </section>
+
                             Categories: <br>
                             {% for ele in recipe.categories.all %}
                                 <a href="{% url 'recipe_category' ele.slug %}">{{ ele.name }}{% if forloop.first and not forloop.revcounter0 < 1 %},{% endif %}</a>

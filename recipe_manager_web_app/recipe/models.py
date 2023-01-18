@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.core.validators import MinValueValidator
 
 
 class Category(models.Model):
@@ -30,6 +31,7 @@ class Recipe(models.Model):
     ingredients = models.ManyToManyField(Ingredient, through="IngredientQuantity", related_name='ingredients')
     created_at = models.DateTimeField(auto_now_add=True)
     categories = models.ManyToManyField(Category, related_name="categories")
+    base_portions = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1)])
 
     def average_rating(self):
         print("--------------->", Rating.objects.filter(recipe=self))
