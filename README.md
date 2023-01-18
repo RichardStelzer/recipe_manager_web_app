@@ -9,12 +9,12 @@ Implemented:
 - [x] Add new recipe via admin page
 - [x] Recipes can have categories
 - [x] Search bar (Search for recipes containing a query word. Or search for recipes of the given category.)
+- [x] Registration form
+- [x] Login
+- [x] Logout 
 
 To be implemented:
 - [ ] Portion calculation form
-- [ ] Registration form
-- [ ] Login
-- [ ] Logout 
 - [ ] Add new recipe (Only logged in users)
 - [ ] Improve frontend with Vue.js
 - [ ] Rating (Users can rate recipes and select a "star" rating)
