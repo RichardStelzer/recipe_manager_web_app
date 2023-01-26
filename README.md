@@ -23,11 +23,11 @@ To be implemented:
 
 Current state:
 <p align="center">
-<img src="./assets/gifs/recipe_.gif" alt="recipe_jan_01.gif" width="800"/>
+<img src="./assets/gifs/recipe_jan_01.gif" alt="recipe_jan_01.gif" width="800"/>
 </p>
 <p align="center">
-<img src="./assets/gifs/admininterface.gif" alt="recipe_jan_02.gif" width="800"/>
+<img src="./assets/gifs/recipe_jan_02.gif" alt="recipe_jan_02.gif" width="800"/>
 </p>
 <p align="center">
-<img src="./assets/gifs/admininterface.gif" alt="recipe_jan_03.gif" width="800"/>
+<img src="./assets/gifs/recipe_jan_03.gif" alt="recipe_jan_03.gif" width="800"/>
 </p>
