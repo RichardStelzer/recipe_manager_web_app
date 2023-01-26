@@ -12,10 +12,11 @@ Implemented:
 - [x] Registration form
 - [x] Login
 - [x] Logout 
+- [x] Portion calculation form
 
 To be implemented:
-- [ ] Portion calculation form
 - [ ] Add new recipe (Only logged in users)
+- [ ] Admin review page e.g. submitted recipes from users other than the admin must be approved before publication
 - [ ] Improve frontend with Vue.js
 - [ ] Rating (Users can rate recipes and select a "star" rating)
 - [ ] Comment section below recipes on "Detail page"
