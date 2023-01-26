@@ -21,6 +21,13 @@ To be implemented:
 - [ ] Rating (Users can rate recipes and select a "star" rating)
 - [ ] Comment section below recipes on "Detail page"
 
-Wireframe showing the basic design of the frontpage:
-
-<p align="center"><img src="/wireframes/recipe_app_frontpage_wireframe.jpg" alt="Wireframe" width="700"/></p>
+Current state:
+<p align="center">
+<img src="./assets/gifs/recipe_.gif" alt="recipe_jan_01.gif" width="800"/>
+</p>
+<p align="center">
+<img src="./assets/gifs/admininterface.gif" alt="recipe_jan_02.gif" width="800"/>
+</p>
+<p align="center">
+<img src="./assets/gifs/admininterface.gif" alt="recipe_jan_03.gif" width="800"/>
+</p>
