@@ -1,15 +1,99 @@
 {% extends "core/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h1 class="title">Log in</h1>
+  <!-- https://bulmatemplates.github.io/bulma-templates/templates/login.html -->
+  <style>
+    .hero.is-success {
+      background: #F2F6FA;
+    }
+    .hero .nav, .hero.is-success .nav {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    .box {
+      margin-top: 5rem;
+    }
+    .avatar {
+      margin-top: -70px;
+      padding-bottom: 20px;
+    }
+    .avatar img {
+      padding: 5px;
+      background: #fff;
+      border-radius: 50%;
+      -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+      box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    }
+    p {
+      font-weight: 700;
+    }
+    p.subtitle {
+      padding-top: 1rem;
+    }
+    .login-hr{
+      border-bottom: 1px solid black;
+    }
+    .has-text-black{
+      color: black;
+    }
+    .fieldWrapper{
+      padding-bottom: 10px;
+    }
+  </style>
 
-    <form method="post" action="."> <!-- "." points to current view -->
-      {% csrf_token %}  <!-- prevents submissions from other pages -->
-      {{ form.as_p }} <!-- https://docs.djangoproject.com/en/4.1/topics/forms/ -> {{ form.as_p }} will render them wrapped in <p> tags.-->
-      <button class="button is-primary" type="submit">Log in</button>
-    </form>
-  </div>
+  <section class="hero is-fullheight">  <!-- is-success -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4">
+          <h3 class="title">Log in</h3>
+          <hr class="login-hr">
+          <p class="subtitle has-text-black">Please log in to proceed.</p>
+          <div class="box">
+            <figure class="avatar">
+              <img src="https://via.placeholder.com/150" alt="Logo placeholder">
+            </figure>
+            <form method="POST" action=".">
+              {% csrf_token %}
+              {{ form.non_field_errors }}
+
+              {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field.errors }}
+                {{ hidden_field }}
+              {% endfor %}
+
+              <div class="fieldWrapper">
+                <div class="control">
+                  {% for error in form.username.errors %}
+                    <span class="help-block">{{ error }}</span>
+                  {% endfor %}
+                  {{ form.username|add_class:"input is-large"|attr:"placeholder:Your Username" }}
+                  <!--<input class="input is-large" type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" placeholder="Your Username" required id="id_username">
+                  -->
+                </div>
+              </div>
+              <div class="fieldWrapper">
+                <div class="control">
+                  {% for error in form.password.errors %}
+                    <span class="help-block">{{ error }}</span>
+                  {% endfor %}
+                  {{ form.password|add_class:"input is-large"|attr:"placeholder:Your Password" }}
+                  <!--<input class="input is-large" type="password" name="password" autocomplete="current-password" required id="id_password" placeholder="Your Password">-->
+                </div>
+              </div>
+              <button class="button is-block is-info is-large is-fullwidth" type="submit">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+            </form>
+          </div>
+          <p class="has-text-grey">
+            <a href="{% url 'signup' %}">Sign Up</a> &nbsp;·&nbsp;
+            <a href="">Forgot Password</a> &nbsp;·&nbsp;
+            <a href="">Need Help?</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}
