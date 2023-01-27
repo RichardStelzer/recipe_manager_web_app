@@ -15,8 +15,8 @@
                             <h3 class="title is-4">Method:</h3>
                             {{ recipe.full_description }}
 
-                            <section class="section">
-                                <form method="get" action="{% url 'recipe_detail' recipe.slug %}">
+                            <section class="section" id="calculation_section">
+                                <form method="get" action="{% url 'recipe_detail' recipe.slug %}#calculation_section">
                                     <div class="field is-horizontal">
                                         <div class="field-label is-normal">
                                             <label class="label">Ingredients for</label>
