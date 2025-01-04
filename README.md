@@ -14,13 +14,6 @@ Basic recipe web app, built with the python web framework django. Work in progre
 - [x] Logout 
 - [x] Portion calculation form
 
-### To be implemented:
-- [ ] Add new recipe (Only logged in users)
-- [ ] Admin review page e.g. submitted recipes from users other than the admin must be approved before publication
-- [ ] Improve frontend with Vue.js
-- [ ] Rating (Users can rate recipes and select a "star" rating)
-- [ ] Comment section below recipes on "Detail page"
-
 ### Current state:
 
 #### (1) Detail view with calculation form
